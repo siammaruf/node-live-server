@@ -5,7 +5,7 @@ const io = require("socket.io")(http);
 const url = require("url");
 const bodyParser = require("body-parser");
 
-app.use(bodyParser());
+app.use(bodyParser.json());
 
 let clientResponseRef;
 
@@ -16,7 +16,6 @@ app.get('/*', (req, res)=>{
         method: "get",
         params: req.query
     }
-
     io.emit("page-request", obj);
     clientResponseRef = res;
 });
@@ -28,7 +27,6 @@ app.post('/*', (req, res)=>{
         method: "post",
         params: req.body
     }
-
     io.emit("page-request", obj);
     clientResponseRef = res;
 });
