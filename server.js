@@ -1,4 +1,5 @@
-const app = require("express")();
+const express  = require("express")();
+const app = express();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
 const url = require("url");
@@ -43,8 +44,13 @@ io.on("connection", (socket)=>{
     // })
 })
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
+const server = http.listen(port, () => console.log(`App listening on port ${PORT}!`));
 
-http.listen(PORT,()=>{
-    console.log("Listening on :"+ PORT);
-})
+server.keepAliveTimeout = 120 * 1000;
+server.headersTimeout = 120 * 1000;
+
+
+// http.listen(PORT,()=>{
+//     console.log("Listening on :"+ PORT);
+// })
