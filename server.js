@@ -45,7 +45,7 @@ io.on("connection", (socket)=>{
 })
 
 const PORT = process.env.PORT || 3001;
-const server = http.listen(port, () => console.log(`App listening on port ${PORT}!`));
+const server = http.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
 
 server.keepAliveTimeout = 120 * 1000;
 server.headersTimeout = 120 * 1000;
